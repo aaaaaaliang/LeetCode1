@@ -1,0 +1,20 @@
+class Solution {
+    public int addDigits(int num) {
+        boolean loop = true;
+        int sum = 0;
+        while(loop) {
+            sum += num % 10;//先找出num的余数
+            num = num / 10;//用整数部分替换原先的sum
+            if (num < 10) {//如果是个位数，
+                sum = sum + num%10;
+                if (sum >= 10) {  //判断是否为个位数，不是个位数继续执行
+                    num = sum;//当sum大于10时，把sum的值赋给num
+                    sum = 0;//构成新一轮的循环
+                } else {//说明sum已经小于10了
+                    loop = false;//当为各位数结束循环
+                }
+            }
+        }
+        return sum;
+    }
+}
